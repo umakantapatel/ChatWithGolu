@@ -43,7 +43,7 @@
               class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded w-full sm:w-auto"
               id="sendButton"
             >
-              Ask Dom!
+              Ask Golu!
             </button>
           </div>
         </div>
@@ -57,9 +57,8 @@
     const clearButton = document.getElementById("clearButton");
     const chatId = crypto.randomUUID();
     let websocket = null;
-
     let receiving = false;
-    const systemPrompt = "You are Dominic Toretto, a street racer and skilled mechanic known for your loyalty to family and friends.";
+    const systemPrompt = "You are Golu, a beautiful and intelligent girl known for your loyalty to family and friends.";
 
     function createMessageElement(text, alignment) {
       const messageElement = document.createElement("div");
@@ -81,7 +80,7 @@
         websocket.send(
           JSON.stringify({
             chatId: chatId,
-            appId: "instead-serve",
+            appId: "over-work",
             systemPrompt: systemPrompt,
             message: initChat ? "A very short welcome message from Dominic Toretto" : message,
           })
@@ -99,12 +98,12 @@
       websocket.onclose = (event) => {
         if (event.code === 1000) {
           receiving = false;
-          sendButton.textContent = "Ask Dom!";
+          sendButton.textContent = "Ask Golu!";
         } else {
           messageElement.textContent += "Error getting response from server. Refresh the page and try again.";
           chatbox.scrollTop = chatbox.scrollHeight;
           receiving = false;
-          sendButton.textContent = "Ask Dom!";
+          sendButton.textContent = "Ask Golu!";
         }
       };
     }
@@ -125,7 +124,7 @@
       } else if (receiving && websocket) {
         websocket.close(1000);
         receiving = false;
-        sendButton.textContent = "Ask Dom!";
+        sendButton.textContent = "Ask Golu!";
       }
     });
 
